@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsplash OAuth Token Fetcher</title>
+    <script>
+        const clientId = 'aYgYAGQ4dZfiL3ucUNj_-PgpNuNXy4gQ1o16CnpVIlI'; // Replace with your access key
+        const redirectUri = 'http://127.0.0.1:3000/auth.html'; // Replace with your redirect URI
+        const responseType = 'code'; // Required value
+        const scope = 'public+read_user+write_user+read_photos+write_photos+write_likes+write_followers+read_collections+write_collections'; // Your requested scopes
+
+        const url = 'https://unsplash.com/oauth/authorize';
+
+        function getAuthUrl() {
+            return `${url}?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=${responseType}&scope=${scope}`;
+        }
+
+        function redirectToAuth() {
+            const authUrl = getAuthUrl();
+            window.location.href = authUrl; // Redirect to the authorization URL
+        }
+    </script>
+</head>
+<body>
+    <h1>Unsplash OAuth Token Fetcher</h1>
+    <button onclick="redirectToAuth()">Get Access Token</button>
+</body>
+</html>
